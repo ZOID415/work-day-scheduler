@@ -4,9 +4,15 @@
 
 $(function () {
   var blocks = $(".time-block");
-
+//this refers to .savebtn
   $(".saveBtn").on("click", function () {
-    console.log($(this));
+   // console.log($(this));
+//this targets siblings of savebtn
+    var userData = $(this).siblings(".description").val();
+    console.log(userData)
+    var userData = $(this).parent
+    localStorage.setItem("hour-12", userData);
+    
 
     // TODO: Add code to apply the past, present, or future class to each time
     // block by comparing the id to the current hour. HINTS: How can the id
@@ -24,7 +30,7 @@ $(function () {
       $("#notify").removeClass("show");
     }, 5000);
   });
-  localStorage.setItem("hour-12", "12am");
+  
 });
   // TODO: Add code to display the current date in the header of the page.
 var objToday = new Date(),
