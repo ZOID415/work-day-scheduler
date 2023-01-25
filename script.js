@@ -10,8 +10,9 @@ $(function () {
 //this targets siblings of savebtn
     var userData = $(this).siblings(".description").val();
     console.log(userData)
-    var userData = $(this).parent
-    localStorage.setItem("hour-12", userData);
+    //TO DO:figure out what to do after targetting parent
+    var id = $(this).parent().attr("id")
+    localStorage.setItem(id, userData);
     
 
     // TODO: Add code to apply the past, present, or future class to each time
@@ -30,6 +31,11 @@ $(function () {
       $("#notify").removeClass("show");
     }, 5000);
   });
+  $(".time-block").each(function(){
+    //console.log($(this).attr("id"))
+var key = $(this).attr("id");
+$(this).children(".description").val(localStorage.getItem(key))
+  })
   
 });
   // TODO: Add code to display the current date in the header of the page.
